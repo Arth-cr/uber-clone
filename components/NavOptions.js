@@ -8,13 +8,13 @@ import { useNavigation } from '@react-navigation/core';
 const data = [
     {
         id: "123",
-        title: "Get a ride",
+        title: "Viagem",
         image: "https://links.papareact.com/3pn",
         screen: "MapScreen",
     },
     {
         id: "456",
-        title: "Order food",
+        title: "Comida",
         image: "https://links.papareact.com/28w",
         screen: "EatsScreen",
     },
