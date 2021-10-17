@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { Provider } from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
@@ -15,20 +15,26 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <SafeAreaProvider>
-        <Stack.Navigator>
-          <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{headerShown: false,}}
-          />
-          <Stack.Screen
-          name="MapScreen"
-          component={MapScreen}
-          options={{headerShown: false,}}
-          />
-        </Stack.Navigator>
-        </SafeAreaProvider>
+        <KeyboardAvoidingView
+        behavior={Platform.OS === 'android' ? "padding" : "height" }
+        style={{flex: 1}}
+        keyboardVerticalOffset={Platform.OS === 'android' ? -285 : 0}
+        >
+          <SafeAreaProvider>
+          <Stack.Navigator>
+              <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{headerShown: false,}}
+              />
+              <Stack.Screen
+              name="MapScreen"
+              component={MapScreen}
+              options={{headerShown: false,}}
+              />
+            </Stack.Navigator>
+          </SafeAreaProvider>
+        </KeyboardAvoidingView>
       </NavigationContainer>
     </Provider>
   );
